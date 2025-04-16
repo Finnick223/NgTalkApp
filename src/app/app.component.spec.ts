@@ -14,16 +14,18 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'ng-talking-app' title`, () => {
+  it(`should have the 'ng-talk-app' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ng-talking-app');
+    expect(app.title).toEqual('ng-talk-app');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, ng-talking-app');
+    expect(compiled.querySelector('h1')?.textContent).toContain(
+      'Hello, ng-talk-app'
+    );
   });
 });
