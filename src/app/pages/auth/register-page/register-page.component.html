@@ -1,0 +1,128 @@
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
+  class="flex w-full max-w-md flex-col gap-6 rounded-2xl bg-white p-8 shadow-lg"
+>
+  <h2 class="text-center text-2xl font-semibold text-gray-800">
+    Create Account
+  </h2>
+
+  <div class="flex flex-col gap-2">
+    <label
+      [for]="RegisterFormControls.USERNAME"
+      class="text-sm font-medium text-gray-700"
+      >Username</label
+    >
+    <input
+      type="email"
+      pInputText
+      placeholder="username"
+      [formControlName]="RegisterFormControls.USERNAME"
+      autocomplete="email"
+      [id]="RegisterFormControls.USERNAME"
+      class="w-full rounded-md border border-zinc-300 p-2"
+    />
+    @if (
+      registerForm.get(RegisterFormControls.USERNAME)?.invalid &&
+      registerForm.get(RegisterFormControls.USERNAME)?.touched
+    ) {
+      <small class="text-red-500">
+        Please enter username at least 4 characters long</small
+      >
+    }
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label
+      [for]="RegisterFormControls.EMAIL"
+      class="text-sm font-medium text-gray-700"
+      >Email</label
+    >
+    <input
+      type="email"
+      pInputText
+      placeholder="you@example.com"
+      [formControlName]="RegisterFormControls.EMAIL"
+      autocomplete="email"
+      [id]="RegisterFormControls.EMAIL"
+      class="w-full rounded-md border border-zinc-300 p-2"
+    />
+    @if (
+      registerForm.get(RegisterFormControls.EMAIL)?.invalid &&
+      registerForm.get(RegisterFormControls.EMAIL)?.touched
+    ) {
+      <small class="text-red-500"> Please enter a valid email address </small>
+    }
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label
+      [for]="RegisterFormControls.PASSWORD"
+      class="text-sm font-medium text-gray-700"
+      >Password</label
+    >
+    <p-password
+      [formControlName]="RegisterFormControls.PASSWORD"
+      [toggleMask]="true"
+      [feedback]="true"
+      autocomplete="new-password"
+      [inputId]="RegisterFormControls.PASSWORD"
+      class="w-full"
+    />
+    @if (
+      registerForm.get(RegisterFormControls.PASSWORD)?.invalid &&
+      registerForm.get(RegisterFormControls.PASSWORD)?.touched
+    ) {
+      <small class="text-red-500">
+        Password must be at least 4 characters long
+      </small>
+    }
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <label
+      [for]="RegisterFormControls.PASSWORD_CONFIRM"
+      class="text-sm font-medium text-gray-700"
+      >Confirm Password</label
+    >
+    <p-password
+      [formControlName]="RegisterFormControls.PASSWORD_CONFIRM"
+      [toggleMask]="true"
+      [feedback]="false"
+      autocomplete="new-password"
+      [inputId]="RegisterFormControls.PASSWORD_CONFIRM"
+      class="w-full"
+    />
+    @if (
+      registerForm.get(RegisterFormControls.PASSWORD_CONFIRM)?.errors?.[
+        'required'
+      ] && registerForm.get(RegisterFormControls.PASSWORD_CONFIRM)?.touched
+    ) {
+      <small class="text-red-500"> Please confirm your password </small>
+    }
+    @if (
+      registerForm.get(RegisterFormControls.PASSWORD_CONFIRM)?.errors?.[
+        'passwordMismatch'
+      ] && registerForm.get(RegisterFormControls.PASSWORD_CONFIRM)?.touched
+    ) {
+      <small class="text-red-500"> Passwords do not match </small>
+    }
+  </div>
+
+  <div>
+    <p-button
+      label="Create Account"
+      type="submit"
+      styleClass="w-full my-1"
+      [disabled]="registerForm.invalid"
+    />
+    <p class="mt-4 text-center text-sm text-gray-600">
+      Already have account?
+      <a
+        routerLink="/auth/login"
+        class="font-medium text-blue-600 hover:text-blue-800"
+        >Log in</a
+      >
+    </p>
+  </div>
+</form>
