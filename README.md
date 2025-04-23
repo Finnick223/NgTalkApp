@@ -1,8 +1,39 @@
-# NgTalkApp
+# NgTalkApp 🗨️
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.7.
+NgTalkApp is a real-time group chat application built with Angular. It features complete user authentication, a modular and scalable architecture, and real-time communication via WebSockets.
 
-## Development server
+---
+
+## Features
+
+- 🔐 **Authentication** — User login and registration with token-based session handling.
+- 💬 **Group Chat** — Join chat groups using a shared code and communicate in real time.
+- 🌐 **WebSocket Communication** — Bidirectional messaging using RxJS-based WebSocket services.
+- 🎨 **Modern UI** — Responsive and accessible design using PrimeNG component library.
+- 🧩 **Scalable Structure** — Modular Angular architecture for easy maintenance and feature expansion.
+
+---
+
+## Tech Stack
+
+- **Framework**: Angular
+- **UI Library**: PrimeNG
+- **Real-time Messaging**: WebSockets (RxJS)
+- **Auth**: JWT-based authentication
+- **Java API**: [GigaChat](https://github.com/Wojtur28/GigaChat)
+
+---
+
+## To-Do
+
+- internationalization
+- file sharing and media messages
+
+---
+
+## Installation
+
+### Development server
 
 To start a local development server, run:
 
@@ -12,21 +43,7 @@ ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
+### Building
 
 To build the project run:
 
@@ -36,24 +53,10 @@ ng build
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
+### Running tests
 
 To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
 ```bash
 ng test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
