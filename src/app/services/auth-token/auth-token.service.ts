@@ -27,13 +27,13 @@ export class AuthTokenService {
     try {
       const tokenParts = token.split('.');
       if (tokenParts.length < 3) {
-        console.warn('Token does not appear to be in JWT format, skipping expiration check.');
+        console.warn('Invalid JWT format');
         return null;
       }
       const base64 = tokenParts[1].replace(/-/g, '+').replace(/_/g, '/');
       return JSON.parse(window.atob(base64));
     } catch (e) {
-      console.error('Failed to decode token payload:', e);
+      console.error('Decoding jwt failed:', e);
       return null;
     }
   }
@@ -48,10 +48,10 @@ export class AuthTokenService {
       if (payload?.exp) {
         const expirationTime = payload.exp * 1000;
         const timeout = expirationTime - Date.now();
-        if (timeout <= 1000) {
-          this.tokenTimeout = setTimeout(() => {
-            this.logout();
-          }, timeout);
+        if (timeout <= 1000 && timeout > 0) {
+          this.tokenTimeout = setTimeout(() => this.logout(), timeout);
+        } else if (timeout <= 0) {
+          this.logout();
         }
       }
     }
@@ -66,11 +66,11 @@ export class AuthTokenService {
   isTokenExpired(token: string): boolean {
     try {
       const payload = this.decodeTokenPayload(token);
-      if (!!payload) {
-        const isExpired = payload.exp ? payload.exp * 1000 < Date.now() : false;
-        // console.log('Exp time:', payload.exp ? new Date(payload.exp * 1000) : 'No expiration');
-        // console.log('Current time:', new Date());
-        return isExpired;
+      if (payload) {
+        // Consider missing exp claim as expired
+        const hasExpiration = typeof payload.exp !== 'undefined';
+        const expirationTime = payload.exp ? payload.exp * 1000 : 0;
+        return hasExpiration ? expirationTime < Date.now() : true;
       }
       return true;
     } catch (e) {
@@ -88,6 +88,18 @@ export class AuthTokenService {
     }
 
     return isValid;
+  }
+
+  getUsernameFromToken(): string | null {
+    const token = this.getToken();
+    if (!token) return null;
+    try {
+      const payload = this.decodeTokenPayload(token);
+      return payload?.['username'] || payload?.sub || null;
+    } catch (error) {
+      console.error('Error decoding JWT:', error);
+      return null;
+    }
   }
 
   logout(): void {

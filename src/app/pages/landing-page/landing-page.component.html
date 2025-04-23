@@ -1,4 +1,19 @@
-<p>landing-page works!</p>
-<div class="card flex justify-center">
-  <p-button label="Submit" severity="success" />
+<div class="mx-auto max-w-md rounded-lg bg-white p-8 shadow-md">
+  <h2 class="mb-6 text-center text-2xl font-semibold">Join a Conversation</h2>
+
+  <input
+    type="text"
+    pInputText
+    placeholder="Enter Conversation ID"
+    [(ngModel)]="conversationId"
+    class="p-inputtext p-component mb-4 w-full rounded-md border"
+  />
+
+  <button
+    pButton
+    type="button"
+    label="Go to Chat"
+    (click)="goToChat()"
+    class="p-button p-component w-full"
+  ></button>
 </div>
