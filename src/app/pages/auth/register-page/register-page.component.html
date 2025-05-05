@@ -20,7 +20,7 @@
       [formControlName]="RegisterFormControls.USERNAME"
       autocomplete="email"
       [id]="RegisterFormControls.USERNAME"
-      class="w-full rounded-md border border-zinc-300 p-2"
+      class="border-surface-300 w-full rounded-md border p-2"
     />
     @if (
       registerForm.get(RegisterFormControls.USERNAME)?.invalid &&
@@ -120,7 +120,7 @@
       Already have account?
       <a
         routerLink="/auth/login"
-        class="font-medium text-blue-600 hover:text-blue-800"
+        class="text-primary-600 hover:text-primary-800 font-medium"
         >Log in</a
       >
     </p>
