@@ -1,1 +1,7 @@
-{}
+{
+  "landing-page": {
+    "title": "Join a conversation",
+    "input-placeholder": "Write conversation ID",
+    "button-label": "Go to chat"
+  }
+}

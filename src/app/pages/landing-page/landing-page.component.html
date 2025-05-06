@@ -1,19 +1,22 @@
-<div class="mx-auto max-w-md rounded-lg bg-white p-8 shadow-md">
-  <h2 class="mb-6 text-center text-2xl font-semibold">Join a Conversation</h2>
+<ng-container *transloco="let t; prefix: 'landing-page'">
+  <div class="mx-auto max-w-md rounded-lg bg-white p-8 shadow-md">
+    <h2 class="mb-6 text-center text-2xl font-semibold">
+      {{ t('title') }}
+    </h2>
+    <input
+      type="text"
+      pInputText
+      [placeholder]="t('input-placeholder')"
+      [(ngModel)]="conversationId"
+      class="p-inputtext p-component mb-4 w-full rounded-md border"
+    />
 
-  <input
-    type="text"
-    pInputText
-    placeholder="Enter Conversation ID"
-    [(ngModel)]="conversationId"
-    class="p-inputtext p-component mb-4 w-full rounded-md border"
-  />
-
-  <button
-    pButton
-    type="button"
-    label="Go to Chat"
-    (click)="goToChat()"
-    class="p-button p-component w-full"
-  ></button>
-</div>
+    <button
+      pButton
+      type="button"
+      [label]="t('button-label')"
+      (click)="goToChat()"
+      class="p-button p-component w-full"
+    ></button>
+  </div>
+</ng-container>
