@@ -3,5 +3,33 @@
     "title": "Dołącz do konwersacji",
     "input-placeholder": "Wpisz ID",
     "button-label": "Chatuj"
+  },
+  "chat-page": {
+    "input-placeholder": "Wpisz wiadomość...",
+    "title": "CHAT"
+  },
+  "register-page": {
+    "form-header": "Stwórz konto",
+    "username-label": "Nazwa użytkownika",
+    "username-error": "Nazwa powinna składać się z co najmniej 4 znaków",
+    "email-label": "E-mail",
+    "email-error": "Wpisz prawidłowy adres email",
+    "email-example": "przyklad@mail.pl",
+    "password-label": "Hasło",
+    "password-error": "Hasło powinno składać się co najmniej z 4 znaków",
+    "confirm-password-label": "Powtórz hasło",
+    "confirm-password-error": "Prosze powtórz hasło",
+    "password-match-error": "Hasła nie pasują do siebie",
+    "submit-button": "Stwórz konto",
+    "login-helper": "Masz już konto?",
+    "login-href": "Zaloguj się"
+  },
+  "login-page": {
+    "email-label": "E-mail",
+    "email-example": "przyklad@mail.pl",
+    "password-label": "Hasło",
+    "login-button": "Zaloguj się",
+    "register-helper": "Nie masz konta?",
+    "register-href": "Zarejestruj się"
   }
 }

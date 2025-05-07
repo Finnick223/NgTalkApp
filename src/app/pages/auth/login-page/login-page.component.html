@@ -1,58 +1,61 @@
-<form
-  [formGroup]="loginForm"
-  (ngSubmit)="onSubmit()"
-  class="flex w-full max-w-sm flex-col gap-6 rounded-2xl bg-white p-8 shadow-lg"
->
-  <h2 class="text-center text-2xl font-semibold text-gray-800">Login</h2>
+<ng-container *transloco="let t; prefix: 'login-page'">
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    class="flex w-[90vw] max-w-sm flex-col gap-6 rounded-2xl bg-white p-8 shadow-lg"
+  >
+    <h2 class="text-center text-2xl font-semibold text-gray-800">Login</h2>
 
-  <div class="flex flex-col gap-2">
-    <label
-      [for]="LoginFormControls.EMAIL"
-      class="text-sm font-medium text-gray-700"
-    >
-      Email
-    </label>
-    <input
-      type="text"
-      pInputText
-      placeholder="you@example.com"
-      [formControlName]="LoginFormControls.EMAIL"
-      autocomplete="email"
-      [id]="LoginFormControls.EMAIL"
-      class="border- w-full rounded-md border border-zinc-300 p-2"
-    />
-  </div>
-
-  <div class="flex flex-col gap-2">
-    <label
-      [for]="LoginFormControls.PASSWORD"
-      class="text-sm font-medium text-gray-700"
-    >
-      Password
-    </label>
-    <p-password
-      [formControlName]="LoginFormControls.PASSWORD"
-      [toggleMask]="true"
-      [feedback]="false"
-      autocomplete="current-password"
-      [inputId]="LoginFormControls.PASSWORD"
-      class="w-full"
-    />
-  </div>
-  <div>
-    <p-button
-      label="Login"
-      type="submit"
-      styleClass="w-full my-1"
-      [disabled]="loginForm.invalid"
-    />
-    <p class="mt-4 text-center text-sm text-gray-600">
-      Dont have account?
-      <a
-        routerLink="/auth/register"
-        class="text-primary-600 hover:text-primary-800 font-medium"
-        >Register</a
+    <div class="flex flex-col gap-2">
+      <label
+        [for]="LoginFormControls.EMAIL"
+        class="text-sm font-medium text-gray-700"
       >
-    </p>
-  </div>
-</form>
+        {{ t('email-label') }}
+      </label>
+      <input
+        type="text"
+        pInputText
+        [placeholder]="t('email-example')"
+        [formControlName]="LoginFormControls.EMAIL"
+        autocomplete="email"
+        [id]="LoginFormControls.EMAIL"
+        class="border- w-full rounded-md border border-zinc-300 p-2"
+      />
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <label
+        [for]="LoginFormControls.PASSWORD"
+        class="text-sm font-medium text-gray-700"
+      >
+        {{ t('password-label') }}
+      </label>
+      <p-password
+        [formControlName]="LoginFormControls.PASSWORD"
+        [toggleMask]="true"
+        [feedback]="false"
+        autocomplete="current-password"
+        [inputId]="LoginFormControls.PASSWORD"
+        class="w-full"
+        [fluid]="true"
+      />
+    </div>
+    <div>
+      <p-button
+        [label]="t('login-button')"
+        type="submit"
+        styleClass="w-full my-1"
+        [disabled]="loginForm.invalid"
+      />
+      <p class="mt-4 text-center text-sm text-gray-600">
+        {{ t('register-helper') }}
+        <a
+          routerLink="/auth/register"
+          class="text-primary-600 hover:text-primary-800 font-medium"
+          >{{ t('register-href') }}</a
+        >
+      </p>
+    </div>
+  </form>
+</ng-container>

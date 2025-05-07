@@ -1,100 +1,104 @@
-<div
-  class="border-surface-200 flex h-[90vh] w-[90vw] max-w-2xl flex-col rounded-2xl border bg-white shadow-sm"
->
-  <!-- Chat HEader -->
+<ng-container *transloco="let t; prefix: 'chat-page'">
   <div
-    class="border-surface-200 flex items-center justify-between border-b p-4"
+    class="border-surface-200 flex h-[90vh] w-[90vw] max-w-2xl flex-col rounded-2xl border bg-white shadow-sm"
   >
-    <div class="flex items-center">
-      <div class="ml-3">
-        <h2 class="text-xl font-medium text-gray-700">
-          {{ conversationId ? conversationId + ' CHAT' : 'CHAT' }}
-        </h2>
+    <!-- Chat HEader -->
+    <div
+      class="border-surface-200 flex items-center justify-between border-b p-4"
+    >
+      <div class="flex items-center">
+        <div class="ml-3">
+          <h2 class="text-xl font-medium text-gray-700">
+            {{
+              conversationId ? conversationId + ' ' + t('title') : t('title')
+            }}
+          </h2>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button
+          pButton
+          class="p-button-text p-button-rounded"
+          icon="pi pi-phone"
+        ></button>
+        <button
+          pButton
+          class="p-button-text p-button-rounded"
+          icon="pi pi-search"
+        ></button>
+        <button
+          pButton
+          class="p-button-text p-button-rounded"
+          icon="pi pi-ellipsis-h"
+        ></button>
       </div>
     </div>
-    <div class="flex items-center space-x-4">
-      <button
-        pButton
-        class="p-button-text p-button-rounded"
-        icon="pi pi-phone"
-      ></button>
-      <button
-        pButton
-        class="p-button-text p-button-rounded"
-        icon="pi pi-search"
-      ></button>
-      <button
-        pButton
-        class="p-button-text p-button-rounded"
-        icon="pi pi-ellipsis-h"
-      ></button>
-    </div>
-  </div>
 
-  <!-- Chat Messages -->
-  <div
-    #chatContainer
-    class="bg-surface-50 w-full flex-1 overflow-y-auto p-4"
-    style="scroll-behavior: smooth"
-  >
-    <div *ngFor="let message of messages" class="mb-4">
-      <div
-        [ngClass]="{
-          'flex justify-end': message.isSentByMe,
-          flex: !message.isSentByMe,
-        }"
-      >
-        <div [ngClass]="{ 'order-1': message.isSentByMe }">
-          <div *ngIf="!message.isSentByMe" class="mb-1 text-sm text-gray-500">
-            {{ message.authorId }}
-          </div>
+    <!-- Chat Messages -->
+    <div
+      #chatContainer
+      class="bg-surface-50 w-full flex-1 overflow-y-auto p-4"
+      style="scroll-behavior: smooth"
+    >
+      <div *ngFor="let message of messages" class="mb-4">
+        <div
+          [ngClass]="{
+            'flex justify-end': message.isSentByMe,
+            flex: !message.isSentByMe,
+          }"
+        >
+          <div [ngClass]="{ 'order-1': message.isSentByMe }">
+            <div *ngIf="!message.isSentByMe" class="mb-1 text-sm text-gray-500">
+              {{ message.authorId }}
+            </div>
 
-          <!-- Message content -->
-          <div
-            [ngClass]="{
-              'bg-primary-500 ml-auto w-max rounded-bl-lg border text-white':
-                message.isSentByMe,
-              'border-surface-200 mr-auto rounded-br-lg border bg-white':
-                !message.isSentByMe,
-            }"
-            class="max-w-xs rounded-tl-lg rounded-tr-lg p-3 shadow-sm sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
-          >
-            <div>{{ message.content }}</div>
+            <!-- Message content -->
+            <div
+              [ngClass]="{
+                'bg-primary-500 ml-auto w-max rounded-bl-lg border text-white':
+                  message.isSentByMe,
+                'border-surface-200 mr-auto rounded-br-lg border bg-white':
+                  !message.isSentByMe,
+              }"
+              class="max-w-xs rounded-tl-lg rounded-tr-lg p-3 shadow-sm sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
+            >
+              <div>{{ message.content }}</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Message Input -->
-  <div class="border-surface-200 rounded-2xl border-t bg-white p-3">
-    <div class="flex items-center">
-      <label for="file-upload" class="cursor-pointer">
+    <!-- Message Input -->
+    <div class="border-surface-200 rounded-2xl border-t bg-white p-3">
+      <div class="flex items-center">
+        <label for="file-upload" class="cursor-pointer">
+          <button
+            pButton
+            class="p-button-text p-button-rounded"
+            icon="pi pi-paperclip"
+          ></button>
+        </label>
+
+        <div class="mx-2 flex-1">
+          <input
+            type="text"
+            pInputText
+            class="border-surface-300 w-full rounded-full border p-3"
+            [placeholder]="t('input-placeholder')"
+            [(ngModel)]="newMessage"
+            (keyup.enter)="sendMessage()"
+          />
+        </div>
+
         <button
           pButton
-          class="p-button-text p-button-rounded"
-          icon="pi pi-paperclip"
+          class="p-button-rounded p-button-primary"
+          icon="pi pi-send"
+          [disabled]="!newMessage.trim()"
+          (click)="sendMessage()"
         ></button>
-      </label>
-
-      <div class="mx-2 flex-1">
-        <input
-          type="text"
-          pInputText
-          class="border-surface-300 w-full rounded-full border p-3"
-          placeholder="Write your message..."
-          [(ngModel)]="newMessage"
-          (keyup.enter)="sendMessage()"
-        />
       </div>
-
-      <button
-        pButton
-        class="p-button-rounded p-button-primary"
-        icon="pi pi-send"
-        [disabled]="!newMessage.trim()"
-        (click)="sendMessage()"
-      ></button>
     </div>
   </div>
-</div>
+</ng-container>

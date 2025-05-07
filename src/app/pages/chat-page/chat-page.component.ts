@@ -17,6 +17,7 @@ import { ChatService } from '@Services/chat/chat.service';
 import { ConversationMessageWithFlag } from '@Interfaces/conversation-message.interface';
 import { AuthTokenService } from '@Services/auth-token/auth-token.service';
 import { ActivatedRoute } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 @Component({
   selector: 'app-landing-page',
   imports: [
@@ -27,6 +28,7 @@ import { ActivatedRoute } from '@angular/router';
     InputTextModule,
     TooltipModule,
     ScrollPanelModule,
+    TranslocoModule,
   ],
   templateUrl: './chat-page.component.html',
   styleUrl: './chat-page.component.css',
