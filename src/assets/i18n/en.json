@@ -31,5 +31,8 @@
     "login-button": "Log In",
     "register-helper": "Dont have account?",
     "register-href": "Register"
+  },
+  "navbar-component": {
+    "button-logout": "Logout"
   }
 }

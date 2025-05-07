@@ -31,5 +31,8 @@
     "login-button": "Zaloguj się",
     "register-helper": "Nie masz konta?",
     "register-href": "Zarejestruj się"
+  },
+  "navbar-component": {
+    "button-logout": "Wyloguj"
   }
 }
