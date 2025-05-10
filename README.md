@@ -11,6 +11,9 @@ NgTalkApp is a real-time group chat application built with Angular. It features 
 - 🌐 **WebSocket Communication** — Bidirectional messaging using RxJS-based WebSocket services.
 - 🎨 **Modern UI** — Responsive and accessible design using PrimeNG component library.
 - 🧩 **Scalable Structure** — Modular Angular architecture for easy maintenance and feature expansion.
+- 🌍 **Internationalization** — Languages support powered by Transloco.
+
+
 
 ---
 
@@ -26,7 +29,6 @@ NgTalkApp is a real-time group chat application built with Angular. It features 
 
 ## To-Do
 
-- internationalization
 - file sharing and media messages
 
 ---
