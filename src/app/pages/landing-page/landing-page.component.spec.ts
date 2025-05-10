@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LandingPageComponent } from './landing-page.component';
+import { getTranslocoModule } from 'src/testing/transloco-testing.module';
 
 describe('LandingPageComponent', () => {
   let component: LandingPageComponent;
@@ -8,7 +9,7 @@ describe('LandingPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LandingPageComponent],
+      imports: [LandingPageComponent, getTranslocoModule()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LandingPageComponent);

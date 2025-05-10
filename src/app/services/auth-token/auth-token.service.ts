@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageKeys } from '@Enums/local-storage-keys';
 import { JwtPayload } from '@Interfaces/payloads/auth/jwt-payload.interface';
 import { RoutingService } from '@Services/routing/routing.service';
 
@@ -7,20 +8,19 @@ import { RoutingService } from '@Services/routing/routing.service';
 })
 export class AuthTokenService {
   constructor(private routingService: RoutingService) {}
-  private readonly tokenKey = 'auth_token';
   private tokenTimeout: any;
 
   storeToken(token: string): void {
-    localStorage.setItem(this.tokenKey, token);
+    localStorage.setItem(LocalStorageKeys.AUTH_TOKEN, token);
     this.startTokenWatcher();
   }
 
   getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
+    return localStorage.getItem(LocalStorageKeys.AUTH_TOKEN);
   }
 
   private clearToken(): void {
-    localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem(LocalStorageKeys.AUTH_TOKEN);
   }
 
   private decodeTokenPayload(token: string): JwtPayload | null {

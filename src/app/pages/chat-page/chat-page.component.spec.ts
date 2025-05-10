@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChatPageComponent } from './chat-page.component';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { getTranslocoModule } from 'src/testing/transloco-testing.module';
 
 describe('ChatPageComponent', () => {
   let component: ChatPageComponent;
@@ -9,7 +10,7 @@ describe('ChatPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChatPageComponent],
+      imports: [ChatPageComponent, getTranslocoModule()],
       providers: [
         {
           provide: ActivatedRoute,

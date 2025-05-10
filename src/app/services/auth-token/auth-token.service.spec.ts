@@ -1,6 +1,7 @@
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { AuthTokenService } from './auth-token.service';
 import { RoutingService } from '@Services/routing/routing.service';
+import { LocalStorageKeys } from '@Enums/local-storage-keys';
 
 describe('AuthTokenService', () => {
   let service: AuthTokenService;
@@ -42,14 +43,14 @@ describe('AuthTokenService', () => {
     it('should store valid token and start watcher', () => {
       service.storeToken(validToken);
       expect(localStorage.setItem).toHaveBeenCalledWith(
-        'auth_token',
+        LocalStorageKeys.AUTH_TOKEN,
         validToken,
       );
     });
 
     it('should handle empty token storage', () => {
       service.storeToken('');
-      expect(localStorage.getItem('auth_token')).toBe('');
+      expect(localStorage.getItem(LocalStorageKeys.AUTH_TOKEN)).toBe('');
     });
   });
 
@@ -106,9 +107,11 @@ describe('AuthTokenService', () => {
 
   describe('Authentication Status', () => {
     it('should clear invalid token automatically', () => {
-      localStorage.setItem('auth_token', 'invalid.token');
+      localStorage.setItem(LocalStorageKeys.AUTH_TOKEN, 'invalid.token');
       service.isAuthenticated();
-      expect(localStorage.removeItem).toHaveBeenCalledWith('auth_token');
+      expect(localStorage.removeItem).toHaveBeenCalledWith(
+        LocalStorageKeys.AUTH_TOKEN,
+      );
     });
 
     it('should return false for empty token', () => {
@@ -173,7 +176,9 @@ describe('AuthTokenService', () => {
       service.storeToken(validToken);
       service.logout();
 
-      expect(localStorage.removeItem).toHaveBeenCalledWith('auth_token');
+      expect(localStorage.removeItem).toHaveBeenCalledWith(
+        LocalStorageKeys.AUTH_TOKEN,
+      );
       expect(mockRoutingService.navigateToLogin).toHaveBeenCalled();
       expect(service['tokenTimeout']).toBeUndefined();
     });

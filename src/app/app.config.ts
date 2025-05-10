@@ -13,6 +13,10 @@ import { routes } from './routes';
 import { MyPreset } from 'src/styles/theme-preset';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { provideTransloco } from '@jsverse/transloco';
+import {
+  LANGUAGE_CONFIG,
+  LANGUAGE_CONFIG_VALUE,
+} from '@Configs/language.config';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -42,5 +46,9 @@ export const appConfig: ApplicationConfig = {
       },
       loader: TranslocoHttpLoader,
     }),
+    {
+      provide: LANGUAGE_CONFIG,
+      useValue: LANGUAGE_CONFIG_VALUE,
+    },
   ],
 };
