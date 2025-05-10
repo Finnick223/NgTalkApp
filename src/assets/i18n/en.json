@@ -1,0 +1,38 @@
+{
+  "landing-page": {
+    "title": "Join a conversation",
+    "input-placeholder": "Write conversation ID",
+    "button-label": "Go to chat"
+  },
+  "chat-page": {
+    "input-placeholder": "Write your message...",
+    "title": "CHAT"
+  },
+  "register-page": {
+    "form-header": "Create Account",
+    "username-label": "Username",
+    "username-error": "Please enter username at least 4 characters long",
+    "email-label": "Email",
+    "email-error": "Please enter a valid email address",
+    "email-example": "you@example.com",
+    "password-label": "Password",
+    "password-error": "Password must be at least 4 characters long",
+    "confirm-password-label": "Confirm Password",
+    "confirm-password-error": "Please confirm your password",
+    "password-match-error": "Passwords do not match",
+    "submit-button": "Create Account",
+    "login-helper": "Already have account?",
+    "login-href": "Log In"
+  },
+  "login-page": {
+    "email-label": "Email",
+    "email-example": "you@example.com",
+    "password-label": "Password",
+    "login-button": "Log In",
+    "register-helper": "Dont have account?",
+    "register-href": "Register"
+  },
+  "navbar-component": {
+    "button-logout": "Logout"
+  }
+}

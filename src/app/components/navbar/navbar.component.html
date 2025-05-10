@@ -1,17 +1,20 @@
-<nav
-  class="bg-surface-100 border-surface-200 flex w-full items-center justify-between border-b px-4 py-2 shadow-sm"
->
-  <p-button
-    icon="pi pi-comments"
-    ariaLabel="Back"
-    variant="text"
-    styleClass="p-button-rounded"
-    (onClick)="back()"
-  ></p-button>
-  <p-button
-    label="Logout"
-    variant="text"
-    styleClass="p-button-rounded text-zinc-700"
-    (onClick)="logout()"
-  ></p-button>
-</nav>
+<ng-container *transloco="let t; prefix: 'navbar-component'">
+  <nav
+    class="bg-surface-100 border-surface-200 flex w-full items-center justify-between border-b px-4 py-2 shadow-sm"
+  >
+    <p-button
+      icon="pi pi-comments"
+      ariaLabel="Back"
+      variant="text"
+      styleClass="p-button-rounded"
+      (onClick)="back()"
+    ></p-button>
+    <app-select-language />
+    <p-button
+      [label]="t('button-logout')"
+      variant="text"
+      styleClass="p-button-rounded text-zinc-700"
+      (onClick)="logout()"
+    ></p-button>
+  </nav>
+</ng-container>

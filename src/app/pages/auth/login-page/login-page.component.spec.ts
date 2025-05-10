@@ -1,10 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, provideHttpClientTesting } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  provideHttpClientTesting,
+} from '@angular/common/http/testing';
 
 import { LoginPageComponent } from './login-page.component';
 import { AuthService } from '@Services/http/auth/auth.service';
 import { importProvidersFrom } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { getTranslocoModule } from 'src/testing/transloco-testing.module';
 
 describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
@@ -12,8 +16,12 @@ describe('LoginPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LoginPageComponent],
-      providers: [importProvidersFrom(HttpClientTestingModule), AuthService, MessageService],
+      imports: [LoginPageComponent, getTranslocoModule()],
+      providers: [
+        importProvidersFrom(HttpClientTestingModule),
+        AuthService,
+        MessageService,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LoginPageComponent);

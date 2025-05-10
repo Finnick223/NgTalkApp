@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { RouterModule } from '@angular/router';
 import { RegisterForm } from '@Interfaces/forms/register-form.interface';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-register-page',
@@ -18,6 +19,7 @@ import { RegisterForm } from '@Interfaces/forms/register-form.interface';
     ButtonModule,
     InputTextModule,
     RouterModule,
+    TranslocoModule,
   ],
   providers: [RegisterPageService],
   templateUrl: './register-page.component.html',

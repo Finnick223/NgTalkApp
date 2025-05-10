@@ -1,0 +1,19 @@
+<p-select
+  [options]="languages"
+  [(ngModel)]="selectedLanguage"
+  optionLabel="name"
+  (onChange)="onChange($event)"
+>
+  <ng-template let-lang #item>
+    <div class="flex items-center gap-2">
+      <span [class]="'fi fi-' + lang.toLowerCase()"></span>
+    </div>
+  </ng-template>
+  <ng-template #selectedItem let-selectedOption>
+    @if (selectedOption) {
+      <div class="flex items-center gap-2">
+        <span [class]="'fi fi-' + selectedOption.toLowerCase()"></span>
+      </div>
+    }
+  </ng-template>
+</p-select>

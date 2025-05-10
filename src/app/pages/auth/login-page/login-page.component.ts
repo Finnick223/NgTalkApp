@@ -6,10 +6,17 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { LoginForm } from '@Interfaces/forms/login-form.interface';
 import { RouterModule } from '@angular/router';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-login-page',
-  imports: [ReactiveFormsModule, PasswordModule, ButtonModule, RouterModule],
+  imports: [
+    ReactiveFormsModule,
+    PasswordModule,
+    ButtonModule,
+    RouterModule,
+    TranslocoModule,
+  ],
   providers: [LoginPageService],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css',
